@@ -514,14 +514,14 @@ CREATE INDEX telem_3 ON TelemetryEvent (posx, posy);
 
 
 
--Q4--------------
+--Q4--------------
 
 EXPLAIN ANALYZE SELECT g.game_id, p.alias, COUNT(te.tic) FROM Game g JOIN Player p ON g.player_id = p.player_id JOIN TelemetryEvent te ON g.game_id = te.game_id AND g.player_id = te.player_id WHERE g.player_id = 1 GROUP BY g.game_id, p.alias; 
 
 CREATE INDEX game4 ON Game (player_id, game_id); 
 
 
--VISTAS-------
+--VISTAS-------
 
 CREATE VIEW player_game_stats AS
 SELECT 
@@ -573,3 +573,4 @@ SELECT
 FROM Player p
 JOIN Ux_responseItem ux ON p.player_id = ux.response_id
 GROUP BY p.player_id, p.alias;
+
